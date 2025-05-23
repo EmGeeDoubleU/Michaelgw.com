@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Michaelgw.com/static/css/main.1e40a265.css",
+    "main.js": "/Michaelgw.com/static/js/main.fb990d76.js",
+    "static/js/415.fc063c41.chunk.js": "/Michaelgw.com/static/js/415.fc063c41.chunk.js",
+    "static/js/787.f6e65957.chunk.js": "/Michaelgw.com/static/js/787.f6e65957.chunk.js",
+    "static/media/virtEconPoster.jpg": "/Michaelgw.com/static/media/virtEconPoster.367fa71f33ceaea5ccbe.jpg",
+    "static/media/Belay_landing.png": "/Michaelgw.com/static/media/Belay_landing.e312e5cf654e7b9f40c5.png",
+    "static/media/CoderWorking.png": "/Michaelgw.com/static/media/CoderWorking.1baf3972e37d28327a16.png",
+    "static/media/face.png": "/Michaelgw.com/static/media/face.6695cf9713f3a68ed062.png",
+    "static/media/about.png": "/Michaelgw.com/static/media/about.aee0f771fbfc1e7b8fa8.png",
+    "static/media/home-bg.jpg": "/Michaelgw.com/static/media/home-bg.dc52d5d40a40b13154b0.jpg",
+    "static/media/editor.png": "/Michaelgw.com/static/media/editor.5b4803d14b910f35eacb.png",
+    "static/media/pre.svg": "/Michaelgw.com/static/media/pre.d4812f51c8c80976eaab.svg",
+    "index.html": "/Michaelgw.com/index.html",
+    "main.1e40a265.css.map": "/Michaelgw.com/static/css/main.1e40a265.css.map",
+    "main.fb990d76.js.map": "/Michaelgw.com/static/js/main.fb990d76.js.map",
+    "415.fc063c41.chunk.js.map": "/Michaelgw.com/static/js/415.fc063c41.chunk.js.map",
+    "787.f6e65957.chunk.js.map": "/Michaelgw.com/static/js/787.f6e65957.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1e40a265.css",
+    "static/js/main.fb990d76.js"
+  ]
+}
