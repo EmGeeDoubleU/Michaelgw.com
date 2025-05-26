@@ -5,8 +5,9 @@ import Particle from "../Particle";
 
 // Import your project images
 import virtEconPoster from "../../Assets/Projects/virtEconPoster.jpg";
-import editorImg from "../../Assets/Projects/editor.png"; // Replace this with your screenshot or remove if not needed
+import editorImg from "../../Assets/Projects/editor.png";
 import belay from "../../Assets/Projects/Belay_landing.png";
+import darkscrollIcon from "../../Assets/Projects/darkscroll-icon.png"; 
 
 function Projects() {
   return (
@@ -17,19 +18,32 @@ function Projects() {
           My <strong className="purple">Recent Work </strong>
         </h1>
         <p style={{ color: "white" }}>
-A selection of projects that highlight my work as both a builder and founder — spanning software development, systems design, and venture-backed product leadership.        </p>
+          A selection of projects that highlight my work as both a builder and founder — spanning software development, systems design, and venture-backed product leadership.
+        </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
 
           <Col md={6} className="project-card">
-  <ProjectCard
-    imgPath={belay}
-    isBlog={false}
-    title="WithBelay – Equity Depreciation Insurance Platform"
-    description="As Founder & CEO, I led the design and development of WithBelay: a web-based platform that protects retail stock portfolios against market downturns. I built the initial infrastructure, secured $6M in funding, and scaled the team to over 15 employees across 4 offices. Backed by Alpaca VC, Indicator Ventures, and LionBird."
-    demoLink="https://www.withbelay.com"
-  />
-</Col>
+            <ProjectCard
+              imgPath={belay}
+              isBlog={false}
+              title="WithBelay – Equity Depreciation Insurance Platform"
+              description="As Founder & CEO, I led the design and development of WithBelay: a web-based platform that protects retail stock portfolios against market downturns. I built the initial infrastructure, secured $6M in funding, and scaled the team to over 15 employees across 4 offices. Backed by Alpaca VC, Indicator Ventures, and LionBird."
+              demoLink="https://www.withbelay.com"
+            />
+          </Col>
 
+          <Col md={6} className="project-card">
+            <ProjectCard
+  imgPath={darkscrollIcon}
+  imgStyle={{ width: "100%", maxHeight: "400px", objectFit: "contain" }}
+  isBlog={false}
+  title="DarkScroll – Anti-Scroll Chrome Extension"
+  description="Open-source Chrome extension that removes YouTube thumbnails to reduce time spent scrolling. Blocks autoplay-bait visuals with a clean black overlay. Built with JavaScript and the Chrome Extensions API."
+  ghLink="https://github.com/EmGeeDoubleU/DarkScroll"
+  demoLink="https://chrome.google.com/webstore/detail/your-extension-id"
+/>
+
+          </Col>
 
           <Col md={6} className="project-card">
             <ProjectCard
@@ -38,7 +52,7 @@ A selection of projects that highlight my work as both a builder and founder —
               title="Virtual Economist Chatbot"
               description="An advanced LLM-powered chatbot built for the Federal Reserve Bank of Philadelphia. Uses RAG architecture to deliver context-aware answers using live economic data (FRED API). Includes full AWS deployment pipeline with custom embedding, vector DB, and model hosting."
               ghLink="https://github.com/EmGeeDoubleU/VirtEconProject"
-              demoLink="" // add demo URL if available
+              demoLink=""
             />
           </Col>
 
@@ -52,7 +66,6 @@ A selection of projects that highlight my work as both a builder and founder —
               demoLink=""
             />
           </Col>
-
 
         </Row>
       </Container>
