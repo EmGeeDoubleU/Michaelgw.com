@@ -1,0 +1,159 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fffcf3;
+    font-family: 'Poppins', sans-serif;
+    color: #333333;
+}
+
+main {
+    flex: 1;
+}
+
+body {
+    background-color: #fffcf3;
+    font-family: 'Poppins', sans-serif;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    position: sticky;
+    top: 0;
+    background-color: #fffcf3;
+    z-index: 100;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    border: 2px solid #fdc85f;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    color: #fdc85f;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menu a {
+    color: #333333;
+    margin-left: 2rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.content {
+    max-width: 1100px;
+    margin: 1rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #fdc85f;
+    margin-bottom: 3rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.card {
+    border: 2px solid #fdc85f;
+    border-radius: 12px;
+    padding: 2rem;
+    background-color: #fffcf3;
+    text-align: left;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #333333;
+}
+
+.card h2 {
+    margin: 0 0 1rem;
+    font-weight: 600;
+}
+
+.card p {
+    margin: 0 0 2rem;
+    font-weight: 400;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    font-size: 0.85rem;
+    color: #33333363;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer-name {
+    font-weight: 600;
+    color: #33333363;
+}
+
+.footer-tagline {
+    font-style: italic;
+    color: #33333363;
+}
+
+.footer-links a {
+    color: #33333363;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: #fdc85f;
+}
+
+
+.github {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/733/733553.png');
+    filter: brightness(0) invert(1);
+}
+
+@media (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

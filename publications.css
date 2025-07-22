@@ -1,0 +1,168 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fffcf3;
+    font-family: 'Poppins', sans-serif;
+    color: #333333;
+}
+
+main {
+    flex: 1;
+}
+
+.nav {
+    position: sticky;
+    top: 0;
+    background-color: #fffcf3;
+    z-index: 100;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    border: 2px solid #fdc85f;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    color: #fdc85f;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menu a {
+    color: #333333;
+    margin-left: 2rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.content {
+    max-width: 800px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #fdc85f;
+    margin-bottom: 3rem;
+}
+
+.pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 4rem;
+}
+
+.pub-card {
+    border: 2px solid #fdc85f;
+    border-radius: 12px;
+    padding: 2rem;
+    background-color: #fffcf3;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.pub-card:hover {
+    transform: translateY(-4px);
+    border-color: #333333;
+}
+
+.pub-card h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.pub-card p {
+    margin: 0 0 1rem;
+    font-weight: 400;
+    color: #333333;
+}
+
+.pub-card a {
+    color: #fdc85f;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.pub-card a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    font-size: 0.85rem;
+    color: #33333363;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer-name {
+    font-weight: 600;
+    color: #33333363;
+}
+
+.footer-tagline {
+    font-style: italic;
+    color: #33333363;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-links a {
+    color: #33333363;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: #fdc85f;
+}
+
+.back-link {
+    margin-bottom: 2rem;
+}
+
+.back-link a {
+    color: #333333;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-link a:hover {
+    color: #fdc85f;
+}
+
+.content p {
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.content h2 {
+    font-size: 1.8rem;
+    color: #333333;
+    margin-top: 4rem;
+}
+
+.content h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+}
+
