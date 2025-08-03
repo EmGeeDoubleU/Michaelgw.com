@@ -166,3 +166,18 @@ h1 {
     margin: 0 0 0.5rem;
 }
 
+.image-container {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.blog-image {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    display: block;
+}
+
