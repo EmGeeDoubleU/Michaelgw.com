@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta charset="UTF-8">
+    <title>Debugging Wires Changed How I Think About Software - Michael Warshowsky</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="publications.css">
+</head>
+<body>
+    <header class="nav">
+        <a href="index.html" class="logo">mgw</a>
+        <nav class="menu">
+            <a href="projects.html">Projects</a>
+            <a href="publications.html">Publications</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="back-link">
+            <a href="publications.html">← Back to Publications</a>
+        </div>
+
+        <h1>Debugging Wires Changed How I Think About Software</h1>
+
+        <p>I recently started getting into hardware. Not in the "let's light up an LED with an Arduino" kind of way but actually sitting down with breadboards and chips and trying to build something real. Right now I'm working on a CPU. It is not fast. It is not small. But it is real. Right now I'm building the adder in the ALU and everything about this feels different than writing software.</p>
+
+        <p>What really gets me is how much space this thing takes up and how little it can do. I've wired up half my desk and it can barely add two numbers. It needs external inputs for everything. It has no memory unless I build memory. It has no instruction set unless I define it and then wire it from scratch. Meanwhile, the computer I'm using to write this has billions of transistors, runs a full operating system, and fits in my backpack. That gap is hard to ignore.</p>
+
+        <p>Getting into hardware has made me look at modern computers in a totally different way. I've been writing software for a while but never thought too deeply about what is actually going on underneath. Now I can't stop thinking about it. These machines are doing real physical work. Something as simple as addition has to ripple through wires and gates and propagate carries correctly or the whole thing breaks. You start to realize every small feature in a modern system had to be engineered, not assumed.</p>
+
+        <p>Debugging hardware has also been completely different than debugging software. You cannot just throw in a print statement and check your assumptions. You have to stop and trace what is actually happening at the signal level. Sometimes you have to check voltages with a multimeter or scope. You find out quickly if you actually understand the logic or not. There is no debugger to save you. It forces a deeper level of thinking. You have to be precise or it just does not work.</p>
+
+        <p>And that has made me better at everything else I do. Writing code feels different now. I think harder about what instructions are doing, how memory works, why timing matters. Even simple things like pushing to a stack or looping over an array start to feel like small miracles once you have to build the parts that make them possible.</p>
+
+        <p>I think more people should be doing this. Especially if you work in software. Even a little bit of hardware work changes how you see everything else. You do not need to be an expert. You just need to try building something real. Get a breadboard. Build a register. Build an adder. Make something that works just barely. It will be frustrating. But it will also be worth it.</p>
+
+        <p>It made me realize we're living on top of layers and layers of complexity that we barely think about. And someone built all of it. One gate at a time.</p>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-name">Michael Warshowsky</p>
+        <p class="footer-tagline">"<em>Build cool shit fast. Learn even faster.</em>"</p>
+        <div class="footer-links">
+            <a href="https://linkedin.com/in/mwarshowsky" target="_blank">LinkedIn| </a>
+            <a href="https://github.com/EmGeeDoubleU" target="_blank">GitHub| </a>
+            <a href="https://leetcode.com/EmGeeDoubleU" target="_blank">LeetCode| </a>
+            <a href="mailto:michaelg.warshowsky@gmail.com">Email</a>
+        </div>
+    </footer>
+</body>
+</html> 
