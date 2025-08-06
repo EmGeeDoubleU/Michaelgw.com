@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <meta charset="UTF-8">
+    <title>Inferno Emulator Initialization Flow - Michael Warshowsky</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/publications.css">
+    <style>
+        .flow-diagram {
+            background: white;
+            border: 2px solid #fdc85f;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .code-block {
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .step-number {
+            background: #fdc85f;
+            color: #333333;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        .step-container {
+            display: flex;
+            align-items: flex-start;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: white;
+            border: 1px solid #fdc85f;
+            border-radius: 8px;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-description {
+            color: #666666;
+            line-height: 1.6;
+        }
+        
+        .file-path {
+            background: #fdc85f;
+            color: #333333;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Diagram styles */
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .diagram-box {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: white;
+            min-width: 120px;
+            position: relative;
+        }
+
+        .diagram-arrow {
+            width: 40px;
+            height: 2px;
+            background: #333;
+            position: relative;
+            margin: 0 0.5rem;
+            align-self: center;
+        }
+
+        .diagram-arrow::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -3px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #333;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+        }
+
+        .diagram-vertical-arrow {
+            position: relative;
+            width: 100%;
+            height: 40px;
+        }
+
+        .diagram-vertical-arrow::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 2px;
+            height: 20px;
+            background: #333;
+        }
+
+        .diagram-vertical-arrow::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            width: 50%;
+            height: 2px;
+            background: #333;
+        }
+
+        .diagram-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .diagram-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .detailed-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .flow-label {
+            width: 200px;
+            font-size: 0.85rem;
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        .flow-step-box {
+            border: 2px solid #333;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: white;
+            min-width: 150px;
+        }
+
+        .flow-divider {
+            border-top: 1px dashed #ccc;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <a href="../index.html" class="logo">mgw</a>
+        <nav class="menu">
+            <a href="../projects.html">Projects</a>
+            <a href="../publications.html">Publications</a>
+            <a href="../about.html">About</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="back-link">
+            <a href="../publications.html">← Back to Publications</a>
+        </div>
+
+        <h1>Inferno Emulator Initialization Flow</h1>
+
+        <p>When we run Inferno, we are starting up the hosted version of the operating system. That means we are running it on top of a host like Linux rather than running it directly on hardware. In this case, we are hosting it on Drexel's Tux remote Linux server.</p>
+
+        <p>The Inferno source tree reflects this setup. There are two major directories that matter here: <span class="file-path">os</span> and <span class="file-path">emu</span>. The <span class="file-path">os</span> directory holds code for the native version of Inferno and is organized by hardware platforms. The <span class="file-path">emu</span> directory holds the hosted version and is organized by host operating systems.</p>
+
+        <p>Inside <span class="file-path">emu</span>, most of our work will happen in the <span class="file-path">port</span> directory. This contains portable code that works across all hosts and is where the majority of the kernel logic lives. The <span class="file-path">port</span> code is responsible for setting up the kernel, but it relies on host specific details to do so. Early in the process, it reaches out to the appropriate host directory to gather that information.</p>
+
+        <p>In our case, we are using Linux as the host, so it pulls that information from the <span class="file-path">/linux/</span> directory. If we were using a different host operating system, it would go to the corresponding directory instead, such as <span class="file-path">/nt/</span> or <span class="file-path">/osx/</span>. This setup allows the system to initialize consistently while adapting to whatever host it is running on.</p>
+
+        <p>The initialization process begins in <span class="file-path">port/main.c</span> inside a function called <span class="file-path">main()</span>. This is the very first code that runs when the system is launched. To set up our kernel, we need to know information about our host, so we switch over to our Linux specific code and run <span class="file-path">libinit()</span> in <span class="file-path">linux/os.c</span>. That function sets up things like the user ID, group ID, and signal environment for Linux. Once that Linux specific setup is complete, we return to portable code and start building out the core parts of the Inferno kernel. This includes creating kernel processes, setting up device drivers, and eventually launching the Dis virtual machine that runs user programs written in Limbo.</p>
+
+        <div class="flow-diagram">
+            <h3>High-Level Initialization Flow</h3>
+            <p>This simplified diagram captures the high-level structure of the Inferno initialization process when hosted on a platform like Linux. It starts at the root, enters the emulator, moves through portable and host specific kernel setup, and finishes by launching the Dis virtual machine.</p>
+            
+            <div class="diagram-container">
+                <div class="image-container">
+                    <img src="../assets/images/High-Level Initialization Flow.png" alt="Inferno Emulator Initialization Flow Diagram" style="max-width: 100%; height: auto; width: 800px;">
+                </div>
+            </div>
+        </div>
+
+        <h2>Detailed Initialization Process</h2>
+        
+        <p>The following flow chart takes you through the full setup process for starting the Inferno OS on a hosted environment - in this case Linux.</p>
+
+        <div class="detailed-flow">
+            <div class="flow-step">
+                <div class="flow-label">
+                    <strong>1. Start in portable code</strong><br>
+                    Begin in <span class="file-path">/port/main.c</span> at <span class="file-path">main()</span>. This is the entry point for all platforms. It sets up the <span class="file-path">eve</span> user, parses arguments, and prepares to load the first module.
+                </div>
+                <div class="diagram-arrow"></div>
+                <div class="flow-step-box">/port/main.c<br>main()</div>
+            </div>
+
+            <div class="flow-divider"></div>
+
+            <div class="flow-step">
+                <div class="flow-label">
+                    <strong>2. Switch to host specific</strong><br>
+                    The <span class="file-path">main()</span> calls the <span class="file-path">libinit(imod)</span> in <span class="file-path">/Linux/os.c</span>. This gathers user ID, group ID, hostname, and configures signal handling appropriate to Linux.
+                </div>
+                <div class="diagram-arrow"></div>
+                <div class="flow-step-box">/Linux/os.c<br>libinit(imod)</div>
+            </div>
+
+            <div class="flow-divider"></div>
+
+            <div class="flow-step">
+                <div class="flow-label">
+                    <strong>3. Create first kproc</strong><br>
+                    Still in host specific code, we use <span class="file-path">kproc</span> to launch <span class="file-path">emuinit()</span>, starting the bridge to virtual machine logic.
+                </div>
+                <div class="diagram-arrow"></div>
+                <div class="flow-step-box">kproc("main", emuinit, ...)</div>
+            </div>
+
+            <div class="flow-divider"></div>
+
+            <div class="flow-step">
+                <div class="flow-label">
+                    <strong>4. Back to portable init</strong><br>
+                    Back in portable code the <span class="file-path">emuinit(imod)</span> function in <span class="file-path">/port/main.c</span> sets up device interfaces and standard file descriptors.
+                </div>
+                <div class="diagram-arrow"></div>
+                <div class="flow-step-box">/port/main.c<br>emuinit(imod)</div>
+            </div>
+
+            <div class="flow-divider"></div>
+
+            <div class="flow-step">
+                <div class="flow-label">
+                    <strong>5. Launch disinit kproc</strong><br>
+                    A second kernel process is spawned in from <span class="file-path">main()</span> to run <span class="file-path">disinit()</span>, which begins setup of the user level Dis virtual machine.
+                </div>
+                <div class="diagram-arrow"></div>
+                <div class="flow-step-box">kproc("main", disinit, ...)</div>
+            </div>
+
+            <div class="flow-divider"></div>
+
+            <div class="flow-step">
+                <div class="flow-label">
+                    <strong>6. Enter disinit setup</strong><br>
+                    In <span class="file-path">/port/dis.c</span>, we initialize the floating point unit, load the module from <span class="file-path">imod</span>, and schedule it.
+                </div>
+                <div class="diagram-arrow"></div>
+                <div class="flow-step-box">/port/dis.c<br>disinit()</div>
+            </div>
+
+            <div class="flow-divider"></div>
+
+            <div class="flow-step">
+                <div class="flow-label">
+                    <strong>7. Run vmachine()</strong><br>
+                    Finally, we enter the infinite <span class="file-path">vmachine()</span> loop which schedules and runs all Dis processes. The system is now fully running.
+                </div>
+                <div class="diagram-arrow"></div>
+                <div class="flow-step-box">vmachine()</div>
+            </div>
+        </div>
+
+        <h2>Key Takeaways</h2>
+        
+        <p>The Inferno initialization process demonstrates a clean separation between portable and host-specific code. The system starts with portable initialization, switches to host-specific setup when needed, and then returns to portable code for the core kernel functionality. This architecture allows Inferno to run consistently across different host operating systems while leveraging platform-specific features when necessary.</p>
+
+        <p>The process culminates in the <span class="file-path">vmachine()</span> loop, which is the heart of the Dis virtual machine that runs user programs written in Limbo. This virtual machine provides the runtime environment for all Inferno applications, making the system truly portable across different hardware and host operating systems.</p>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-name">Michael Warshowsky</p>
+        <p class="footer-tagline">"<em>Build cool shit fast. Learn even faster.</em>"</p>
+        <div class="footer-links">
+            <a href="https://linkedin.com/in/mwarshowsky" target="_blank">LinkedIn| </a>
+            <a href="https://github.com/EmGeeDoubleU" target="_blank">GitHub| </a>
+            <a href="https://leetcode.com/EmGeeDoubleU" target="_blank">LeetCode| </a>
+            <a href="mailto:michaelg.warshowsky@gmail.com">Email</a>
+        </div>
+    </footer>
+</body>
+</html> 
