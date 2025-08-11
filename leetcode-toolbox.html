@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LeetCode Toolbox - Michael Warshowsky</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/leetcode-toolbox.css">
+</head>
+<body>
+    <header class="nav">
+        <div class="logo">mgw</div>
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="publications.html">Publications</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <h1>LeetCode Toolbox</h1>
+        <p class="subheader">Essential Python Functions, Data Structures & Algorithms</p>
+        
+        <div class="main-layout">
+            <div class="sidebar">
+                <div class="table-of-contents">
+                    <h2>Table of Contents</h2>
+                    <div class="toc-sections">
+                                        <div class="toc-section">
+                    <h3>Hash/Set Operations</h3>
+                    <ul>
+                        <li><a href="#hash-set-operations">Counter, Sets, Dictionaries, most_common, items, values</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>Array Operations</h3>
+                    <ul>
+                        <li><a href="#array-operations">Lists, zip, enumerate, sort, min/max, join/split, reduce</a></li>
+                    </ul>
+                </div>
+                        <div class="toc-section">
+                            <h3>Functional Programming</h3>
+                            <ul>
+                                <li><a href="#functional-programming">map, filter, lambda, list comprehensions</a></li>
+                            </ul>
+                        </div>
+                        <div class="toc-section">
+                            <h3>Algorithms</h3>
+                            <ul>
+                                <li><a href="#algorithms">Binary Search, Two Pointers, Sliding Window, DFS/BFS, Union-Find</a></li>
+                            </ul>
+                        </div>
+                        <div class="toc-section">
+                            <h3>Math Operations</h3>
+                            <ul>
+                                <li><a href="#math-operations">Math module, modulo, power operations</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+
+        <div id="hash-set-operations" class="section-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">Hash/Set Operations</h2>
+                <button class="collapse-btn" onclick="toggleSection('hash-set-operations')">−</button>
+            </div>
+            <div class="section-content" id="hash-set-operations-content">
+                <div class="toolbox-container">
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('counter')">
+                            <h3>Counter</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="counter-content" style="display: none;">
+                            <p class="description">Counts how many times each element appears.</p>
+                            <div class="example">
+                                <code>Counter([1, 2, 2, 3])</code>
+                                <p class="result">Returns: {1: 1, 2: 2, 3: 1}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('items')">
+                            <h3>.items()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="items-content" style="display: none;">
+                            <p class="description">Used to loop through both keys and values.</p>
+                            <div class="example">
+                                <code>Counter('aab').items()</code>
+                                <p class="result">Returns: [('a', 2), ('b', 1)]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('values')">
+                            <h3>.values()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="values-content" style="display: none;">
+                            <p class="description">Extracts only the counts or values.</p>
+                            <div class="example">
+                                <code>Counter('aab').values()</code>
+                                <p class="result">Returns: [2, 1]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('most-common')">
+                            <h3>most_common(n)</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="most-common-content" style="display: none;">
+                            <p class="description">Used with Counter to get most frequent elements.</p>
+                            <div class="example">
+                                <code>Counter('aab').most_common(1)</code>
+                                <p class="result">Returns: [('a', 2)]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('set-ops')">
+                            <h3>Set Operations</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="set-ops-content" style="display: none;">
+                            <p class="description">Unordered collection of unique elements.</p>
+                            <div class="example">
+                                <code>set([1, 2, 2, 3])</code>
+                                <p class="result">Returns: {1, 2, 3}</p>
+                                <code>s.add(4)</code>
+                                <p class="result">Adds element 4</p>
+                                <code>s.remove(2)</code>
+                                <p class="result">Removes element 2</p>
+                                <code>s1.union(s2)</code>
+                                <p class="result">Combines two sets</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('dict-ops')">
+                            <h3>Dictionary (Hashmap)</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="dict-ops-content" style="display: none;">
+                            <p class="description">Key-value pairs for fast lookups.</p>
+                            <div class="example">
+                                <code>d = {1: "a", 2: "b"}</code>
+                                <p class="result">Creates dictionary</p>
+                                <code>d.get(1, "default")</code>
+                                <p class="result">Returns "a" or "default" if key missing</p>
+                                <code>d.keys()</code>
+                                <p class="result">Returns: dict_keys([1, 2])</p>
+                                <code>d.setdefault(3, "c")</code>
+                                <p class="result">Sets default if key doesn't exist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="array-operations" class="section-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">Array Operations</h2>
+                <button class="collapse-btn" onclick="toggleSection('array-operations')">−</button>
+            </div>
+            <div class="section-content" id="array-operations-content">
+                <div class="toolbox-container">
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('list-ops')">
+                            <h3>List Operations</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="list-ops-content" style="display: none;">
+                            <p class="description">Essential list methods for dynamic arrays.</p>
+                            <div class="example">
+                                <code>nums.append(5)</code>
+                                <p class="result">Adds 5 to end</p>
+                                <code>nums.pop()</code>
+                                <p class="result">Removes and returns last element</p>
+                                <code>nums.insert(0, 1)</code>
+                                <p class="result">Inserts 1 at index 0</p>
+                                <code>nums[1:4]</code>
+                                <p class="result">Slicing: elements 1 to 3</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('zip')">
+                            <h3>zip()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="zip-content" style="display: none;">
+                            <p class="description">Combines multiple lists into tuples.</p>
+                            <div class="example">
+                                <code>zip([1, 2], ['a', 'b'])</code>
+                                <p class="result">Returns: [(1, 'a'), (2, 'b')]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('enumerate')">
+                            <h3>enumerate()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="enumerate-content" style="display: none;">
+                            <p class="description">Gives (index, value) when looping through a list.</p>
+                            <div class="example">
+                                <code>enumerate(['x', 'y'])</code>
+                                <p class="result">Returns: [(0, 'x'), (1, 'y')]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('sort')">
+                            <h3>sort()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="sort-content" style="display: none;">
+                            <p class="description">Sorts list in place. Reorders the list without creating a new one.</p>
+                            <div class="example">
+                                <code>nums = [3, 1, 2]; nums.sort()</code>
+                                <p class="result">Returns: [1, 2, 3] (in-place)</p>
+                                <code>nums.sort(reverse=True)</code>
+                                <p class="result">Returns: [3, 2, 1] (in-place)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('min')">
+                            <h3>min()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="min-content" style="display: none;">
+                            <p class="description">Returns the smallest item from an iterable or the smallest of two or more arguments.</p>
+                            <div class="example">
+                                <code>min([3, 1, 4, 2])</code>
+                                <p class="result">Returns: 1</p>
+                                <code>min(10, 20)</code>
+                                <p class="result">Returns: 10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('max')">
+                            <h3>max()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="max-content" style="display: none;">
+                            <p class="description">Returns the largest item from an iterable or the largest of two or more arguments.</p>
+                            <div class="example">
+                                <code>max([3, 1, 4, 2])</code>
+                                <p class="result">Returns: 4</p>
+                                <code>max(10, 20)</code>
+                                <p class="result">Returns: 20</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('join')">
+                            <h3>join()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="join-content" style="display: none;">
+                            <p class="description">Joins elements of an iterable into a single string, with a separator.</p>
+                            <div class="example">
+                                <code>' '.join(['Hello', 'world'])</code>
+                                <p class="result">Returns: 'Hello world'</p>
+                                <code>'-'.join(['1', '2', '3'])</code>
+                                <p class="result">Returns: '1-2-3'</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('split')">
+                            <h3>split()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="split-content" style="display: none;">
+                            <p class="description">Splits a string into a list based on a separator.</p>
+                            <div class="example">
+                                <code>'Hello world'.split()</code>
+                                <p class="result">Returns: ['Hello', 'world']</p>
+                                <code>'apple,banana,orange'.split(',')</code>
+                                <p class="result">Returns: ['apple', 'banana', 'orange']</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('reduce')">
+                            <h3>reduce()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="reduce-content" style="display: none;">
+                            <p class="description">Applies a function cumulatively to the items of an iterable, reducing it to a single value.</p>
+                            <div class="example">
+                                <code>reduce(operator.xor, [1, 2, 3])</code>
+                                <p class="result">Returns: 0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('deque')">
+                            <h3>Deque (Double-ended Queue)</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="deque-content" style="display: none;">
+                            <p class="description">Efficient for queue operations from both ends.</p>
+                <div class="example">
+                    <code>from collections import deque</code>
+                    <p class="result">Import statement</p>
+                    <code>d = deque([1, 2, 3])</code>
+                    <p class="result">Creates deque</p>
+                    <code>d.appendleft(0)</code>
+                    <p class="result">Adds to left end</p>
+                    <code>d.popleft()</code>
+                    <p class="result">Removes from left end</p>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="functional-programming" class="section-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">Functional Programming</h2>
+                <button class="collapse-btn" onclick="toggleSection('functional-programming')">−</button>
+            </div>
+            <div class="section-content" id="functional-programming-content">
+                <div class="toolbox-container">
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('map')">
+                            <h3>map()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="map-content" style="display: none;">
+                            <p class="description">Applies a function to each item of an iterable.</p>
+                            <div class="example">
+                                <code>map(lambda x: x*2, [1, 2, 3])</code>
+                                <p class="result">Returns: [2, 4, 6]</p>
+                                <code>list(map(str, [1, 2, 3]))</code>
+                                <p class="result">Returns: ['1', '2', '3']</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('filter')">
+                            <h3>filter()</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="filter-content" style="display: none;">
+                            <p class="description">Filters items based on a condition.</p>
+                            <div class="example">
+                                <code>filter(lambda x: x > 2, [1, 2, 3, 4])</code>
+                                <p class="result">Returns: [3, 4]</p>
+                                <code>list(filter(None, [0, 1, False, True]))</code>
+                                <p class="result">Returns: [1, True]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('lambda')">
+                            <h3>lambda</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="lambda-content" style="display: none;">
+                            <p class="description">Short anonymous function.</p>
+                            <div class="example">
+                                <code>f = lambda x: x**2</code>
+                                <p class="result">Creates square function</p>
+                                <code>f(2)</code>
+                                <p class="result">Returns: 4</p>
+                                <code>lambda x, y: x + y</code>
+                                <p class="result">Anonymous addition function</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('list-comprehensions')">
+                            <h3>List Comprehensions</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="list-comprehensions-content" style="display: none;">
+                            <p class="description">Concise iteration and transformation.</p>
+                            <div class="example">
+                                <code>[x for x in range(5)]</code>
+                                <p class="result">Returns: [0, 1, 2, 3, 4]</p>
+                                <code>[x*2 for x in [1,2,3] if x > 1]</code>
+                                <p class="result">Returns: [4, 6]</p>
+                                <code>[[i,j] for i in range(2) for j in range(2)]</code>
+                                <p class="result">Returns: [[0,0], [0,1], [1,0], [1,1]]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="algorithms" class="section-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">Algorithms & Techniques</h2>
+                <button class="collapse-btn" onclick="toggleSection('algorithms')">−</button>
+            </div>
+            <div class="section-content" id="algorithms-content">
+                <div class="toolbox-container">
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('binary-search')">
+                            <h3>Binary Search</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="binary-search-content" style="display: none;">
+                            <p class="description">Efficient searching in sorted lists.</p>
+                            <div class="example">
+                                <code>import bisect</code>
+                                <p class="result">Import statement</p>
+                                <code>bisect.bisect_left([1, 2, 4, 5], 3)</code>
+                                <p class="result">Returns: 2 (insertion point)</p>
+                                <code>bisect.bisect_right([1, 2, 2, 3], 2)</code>
+                                <p class="result">Returns: 3 (rightmost insertion)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('two-pointers')">
+                            <h3>Two Pointers</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="two-pointers-content" style="display: none;">
+                            <p class="description">Used for sorted arrays or linked lists.</p>
+                            <div class="example">
+                                <code>left, right = 0, len(nums) - 1</code>
+                                <p class="result">Initialize pointers</p>
+                                <code>while left < right:</code>
+                                <p class="result">Two pointer loop pattern</p>
+                                <code># Move pointers based on condition</code>
+                                <p class="result">Common pattern for array problems</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('sliding-window')">
+                            <h3>Sliding Window</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="sliding-window-content" style="display: none;">
+                            <p class="description">For subarray/substring problems.</p>
+                            <div class="example">
+                                <code>left = right = 0</code>
+                                <p class="result">Initialize window</p>
+                                <code>while right < len(s):</code>
+                                <p class="result">Expand window</p>
+                                <code>while condition: left += 1</code>
+                                <p class="result">Shrink window</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('dfs')">
+                            <h3>DFS (Depth-First Search)</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="dfs-content" style="display: none;">
+                            <p class="description">Recursive tree/graph traversal.</p>
+                            <div class="example">
+                                <code>def dfs(node):</code>
+                                <p class="result">Base case: if not node</p>
+                                <code># Process current node</code>
+                                <p class="result">Recursive calls</p>
+                                <code>dfs(node.left)</code>
+                                <p class="result">dfs(node.right)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('bfs')">
+                            <h3>BFS (Breadth-First Search)</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="bfs-content" style="display: none;">
+                            <p class="description">Level-wise tree/graph traversal.</p>
+                            <div class="example">
+                                <code>from collections import deque</code>
+                                <p class="result">Import for queue</p>
+                                <code>queue = deque([root])</code>
+                                <p class="result">Initialize queue</p>
+                                <code>while queue:</code>
+                                <p class="result">Process level by level</p>
+                                <code>node = queue.popleft()</code>
+                                <p class="result">Process current node</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('union-find')">
+                            <h3>Union-Find (Disjoint Set)</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="union-find-content" style="display: none;">
+                            <p class="description">For tracking connected components.</p>
+                            <div class="example">
+                                <code>parent = list(range(n))</code>
+                                <p class="result">Initialize parents</p>
+                                <code>def find(x):</code>
+                                <p class="result">Find root with path compression</p>
+                                <code>def union(x, y):</code>
+                                <p class="result">Union by rank/size</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="math-operations" class="section-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">Mathematical Operations</h2>
+                <button class="collapse-btn" onclick="toggleSection('math-operations')">−</button>
+            </div>
+            <div class="section-content" id="math-operations-content">
+                <div class="toolbox-container">
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('math-module')">
+                            <h3>Math Module</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="math-module-content" style="display: none;">
+                            <p class="description">Common mathematical functions.</p>
+                            <div class="example">
+                                <code>import math</code>
+                                <p class="result">Import statement</p>
+                                <code>math.sqrt(16)</code>
+                                <p class="result">Returns: 4.0</p>
+                                <code>math.ceil(3.2)</code>
+                                <p class="result">Returns: 4</p>
+                                <code>math.gcd(12, 18)</code>
+                                <p class="result">Returns: 6</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('modulo')">
+                            <h3>Modulo Operator (%)</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="modulo-content" style="display: none;">
+                            <p class="description">Prevents overflow and cyclic operations.</p>
+                            <div class="example">
+                                <code>17 % 5</code>
+                                <p class="result">Returns: 2</p>
+                                <code>(-3) % 5</code>
+                                <p class="result">Returns: 2 (Python behavior)</p>
+                                <code>for i in range(10): i % 3</code>
+                                <p class="result">Cyclic: 0, 1, 2, 0, 1, 2...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="function-item">
+                        <div class="function-header" onclick="toggleFunction('power')">
+                            <h3>Power & Exponentiation</h3>
+                            <span class="expand-btn">+</span>
+                        </div>
+                        <div class="function-content" id="power-content" style="display: none;">
+                            <p class="description">Efficient power operations.</p>
+                            <div class="example">
+                                <code>2 ** 3</code>
+                                <p class="result">Returns: 8</p>
+                                <code>pow(2, 3, 5)</code>
+                                <p class="result">Returns: 3 (2^3 % 5)</p>
+                                <code>pow(2, -1, 7)</code>
+                                <p class="result">Returns: 4 (modular inverse)</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-name">Michael Warshowsky</p>
+        <p class="footer-tagline">"<em>Build cool shit fast. Learn even faster.</em>"</p>
+        <div class="footer-links">
+            <a href="https://linkedin.com/in/mwarshowsky" target="_blank">LinkedIn| </a>
+            <a href="https://github.com/EmGeeDoubleU" target="_blank">GitHub| </a>
+            <a href="https://leetcode.com/EmGeeDoubleU/" target="_blank">LeetCode| </a>
+            <a href="mailto:michaelg.warshowsky@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const button = event.target;
+            
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                button.textContent = '−';
+            } else {
+                content.style.display = 'none';
+                button.textContent = '+';
+            }
+        }
+
+        function toggleFunction(functionId) {
+            const content = document.getElementById(functionId + '-content');
+            const button = event.currentTarget.querySelector('.expand-btn');
+            
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                button.textContent = '−';
+            } else {
+                content.style.display = 'none';
+                button.textContent = '+';
+            }
+        }
+
+        // Smooth scrolling for table of contents links
+        document.querySelectorAll('.toc-section a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

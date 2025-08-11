@@ -145,6 +145,24 @@ h1 {
     filter: brightness(0) invert(1);
 }
 
+.project-link {
+    display: inline-block;
+    color: #fdc85f;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: 2px solid #fdc85f;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.project-link:hover {
+    background-color: #fdc85f;
+    color: white;
+}
+
 @media (max-width: 900px) {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
