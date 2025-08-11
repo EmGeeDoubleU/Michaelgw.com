@@ -207,7 +207,7 @@
 
         <h1>Inferno Emulator Initialization Flow</h1>
 
-        <p>When we run Inferno, we are starting up the hosted version of the operating system. That means we are running it on top of a host like Linux rather than running it directly on hardware. In this case, we are hosting it on Drexel's Tux remote Linux server.</p>
+        <p>Inferno, the evolution of the Plan9 OS, can run on top of another operating system. When we fire up the hosted version, we are not running it directly on hardware. Instead, it runs on a host OS like Linux. In this case, we are going to host it on a remote Linux server.</p>
 
         <p>The Inferno source tree reflects this setup. There are two major directories that matter here: <span class="file-path">os</span> and <span class="file-path">emu</span>. The <span class="file-path">os</span> directory holds code for the native version of Inferno and is organized by hardware platforms. The <span class="file-path">emu</span> directory holds the hosted version and is organized by host operating systems.</p>
 
